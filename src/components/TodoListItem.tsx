@@ -1,6 +1,12 @@
-export default function TodoListItem() {
+import type { todoListItemInterface } from "../interfaces/todoListItemInterface";
+
+interface TodoListItemProps {
+  todoItem: todoListItemInterface;
+}
+
+export default function TodoListItem( {todoItem}:TodoListItemProps) {
     return (<>
-        <li><h1>List item</h1></li>
+        <li>{todoItem.todo}</li>
     </>
     )
 }

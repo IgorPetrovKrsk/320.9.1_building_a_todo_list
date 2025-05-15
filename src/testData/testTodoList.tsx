@@ -1,10 +1,4 @@
-interface todoListItemInterface {
-    userId:number;
-    id:number;
-    todo:string;
-    completed:boolean;
-}
-
+import type { todoListItemInterface } from "../interfaces/todoListItemInterface";
 const testToDoList:todoListItemInterface[] =  [
   {
     "userId": 1,
