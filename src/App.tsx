@@ -4,12 +4,13 @@ import testToDoList from './testData/testToDoList';
 import TodoListItem from './components/ToDoListItem';
 import TodoListProvider from './contextProviders/todoListProvider';
 import type { todoListItemInterface } from "../interfaces/todoListItemInterface";
+import type {Action} from './reducers/todoListReducer';
 import './App.css'
 import TodoListItemAdd from './components/TodoListItemAdd';
 
 //creating 2 separate context I'm still on the edge should I use todoList in context or just dispatcher
 export const TodoListStateContext = createContext(null);
-export const TodoListDispatchContext = createContext(null);
+export const TodoListDispatchContext = createContext<React.Dispatch<Action> | null>(null);
 
 function App() {
 

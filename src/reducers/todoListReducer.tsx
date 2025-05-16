@@ -1,7 +1,7 @@
 
 import type { todoListItemInterface } from "../interfaces/todoListItemInterface";
-type Action =
-    | { type: 'ADD' }
+export type Action =
+    | { type: 'ADD'; payload: string }
     | { type: 'DELETE'; payload: todoListItemInterface }
     | { type: 'EDIT'; payload: todoListItemInterface };
 
@@ -9,11 +9,11 @@ type Action =
 export default function todoListReducer(state: todoListItemInterface[], action: Action): todoListItemInterface[] {
     switch (action.type) {
         case 'ADD':
+            console.log(`add called on object: ${action.payload}`);
             return state;
             break;
         case 'DELETE':
-            console.log(`delete called on id ${}`);
-
+            console.log(`delete called on object: ${action.payload.todo}`);
             return state;
             break;
         case 'EDIT':
