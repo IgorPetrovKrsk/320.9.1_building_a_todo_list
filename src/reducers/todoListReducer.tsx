@@ -10,7 +10,17 @@ export type Action =
 export default function todoListReducer(state: todoListItemInterface[], action: Action): todoListItemInterface[] {
     switch (action.type) {
         case 'ADD':
-            console.log(`add called on object: ${action.payload}`);
+            if (!action.payload.trim()) {
+                alert('You cannot add blank to do item');
+            } else {
+                const newTodo: todoListItemInterface = {
+                    userId: 1,
+                    id: state.length > 0 ? Math.max(...state.map(it => it.id)) + 1 : 0,
+                    todo: action.payload,
+                    completed: false
+                }
+                return [newTodo,...state]; 
+            }
             return state;
             break;
         case 'SWITCH':
