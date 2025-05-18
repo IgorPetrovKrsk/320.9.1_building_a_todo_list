@@ -19,7 +19,7 @@ export default function todoListReducer(state: todoListItemInterface[], action: 
                     todo: action.payload,
                     completed: false
                 }
-                return [newTodo,...state]; 
+                return [newTodo, ...state];
             }
             return state;
             break;
@@ -37,6 +37,13 @@ export default function todoListReducer(state: todoListItemInterface[], action: 
             return state;
             break;
         case 'EDIT':
+            if (!action.payload.todo.trim()) {
+                alert('You cannot edit todo item to blank. Use delete.');
+            } else {
+                state = state.map(it => {
+                    return it.id === action.payload.id ? action.payload : it;
+                })
+            }
             return state;
             break;
         default:
