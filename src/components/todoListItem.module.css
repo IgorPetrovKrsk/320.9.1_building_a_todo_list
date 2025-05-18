@@ -28,3 +28,6 @@ button:focus-visible {
 .btnCancel{
   background-color: rgb(255, 105, 105);
 }
+.textCompleted{
+  text-decoration: line-through;
+}

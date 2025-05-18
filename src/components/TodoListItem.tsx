@@ -34,10 +34,18 @@ export default function TodoListItem({ todoItem }: TodoListItemProps) {
 
   return (<>
     <tr className={styles.todoListItem}>
-      <td> <input onChange={() => todoListDispatchContext?.({ type: 'SWITCH', payload: todoItem })} type="checkbox" checked={todoItem.completed} /></td>
-      <td>{toggleEdit ? <input onChange={onTodoChange} type="text" name='todo' value={todo.todo} /> : todoItem.todo}</td>
-      <td>{toggleEdit ? <button className={styles.btnSave} onClick={onSaveClick}>Save</button> : <button onClick={onEditClick}>Edit</button>} </td>
-      <td>{toggleEdit ? <button className={styles.btnCancel} onClick={onCancelClick}>Cancel</button> : <button onClick={() => todoListDispatchContext?.({ type: 'DELETE', payload: todoItem })}>Delete</button>}</td>
+      <td>
+        <input onChange={() => todoListDispatchContext?.({ type: 'SWITCH', payload: todoItem })} type="checkbox" checked={todoItem.completed} />
+      </td>
+      <td className={todoItem.completed ? styles.textCompleted : ""}>
+        {toggleEdit ? <input onChange={onTodoChange} type="text" name='todo' value={todo.todo} /> : todoItem.todo}
+      </td>
+      <td>
+        {toggleEdit ? <button className={styles.btnSave} onClick={onSaveClick}>Save</button> : <button onClick={onEditClick}>Edit</button>}
+      </td>
+      <td>
+        {toggleEdit ? <button className={styles.btnCancel} onClick={onCancelClick}>Cancel</button> : <button onClick={() => todoListDispatchContext?.({ type: 'DELETE', payload: todoItem })}>Delete</button>}
+      </td>
     </tr>
   </>
   )
