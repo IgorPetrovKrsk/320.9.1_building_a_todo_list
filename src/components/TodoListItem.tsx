@@ -44,7 +44,8 @@ export default function TodoListItem({ todoItem }: TodoListItemProps) {
         {toggleEdit ? <button className={styles.btnSave} onClick={onSaveClick}>Save</button> : <button onClick={onEditClick}>Edit</button>}
       </td>
       <td>
-        {toggleEdit ? <button className={styles.btnCancel} onClick={onCancelClick}>Cancel</button> : <button onClick={() => todoListDispatchContext?.({ type: 'DELETE', payload: todoItem })}>Delete</button>}
+        {toggleEdit ? <button className={styles.btnCancel} onClick={onCancelClick}>Cancel</button> :
+          <button disabled={!todoItem.completed} onClick={() => todoListDispatchContext?.({ type: 'DELETE', payload: todoItem })}>Delete</button>}
       </td>
     </tr>
   </>
